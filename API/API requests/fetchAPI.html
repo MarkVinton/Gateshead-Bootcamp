@@ -1,0 +1,25 @@
+<html>
+<head>
+<script>
+    function fetchWelcome() {
+    let file = "https://api.tvmaze.com/search/shows?q=office";
+      // Fetch the response from the URL, which returns a Promise
+      const fetchPromise = fetch(file);
+      // When the response comes back, call the convertToText() function
+      fetchPromise.then(convertToText);    }
+    function convertToText(response) {
+      // Convert the response to text, which returns a Promise
+      let textPromise = response.text();
+      // When the text comes back, call the addTextToPage() function
+      textPromise.then(addTextToPage);
+    }
+    function addTextToPage(text){
+      document.getElementById('welcome-container').innerText = text;      
+    }
+</script>
+</head>
+<body onload="fetchWelcome()">
+<div id="welcome-container"></div>
+<p>This is the page content.</p>
+</body>
+</html>

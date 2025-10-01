@@ -1,0 +1,45 @@
+meta {
+  name: BookTesting
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://demoqa.com/BookStore/v1/Books
+  body: none
+  auth: none
+}
+
+tests {
+  test("res.status should be 200", function() {
+  
+   
+  
+    const data = res.getBody();
+  
+    expect(res.getStatus()).to.equal(200);
+  
+  });
+  test("response should contain books array", function() {
+  
+    const data = res.getBody();
+  
+    expect(data.books).to.be.an("array");
+  
+  });
+  test("response should contain books array", function(){
+    const data = res.getBody();
+    expect(data.books[0]).to.have.property("title");
+    expect(data.books[0]).to.have.property("isbn");
+  });
+  test("should include 'Git Pocket Guide'", function() {
+    const data = res.getBody();
+    const titles = data.books.map(book => book.title);
+    expect(titles).to.include("Git Pocket Guide");
+  });
+  test("should include Speaking JavaScript'", function() {
+    const data = res.getBody();
+    const titles = data.books.map(book => book.title);
+    expect(titles).to.include("Speaking JavaScript");
+  });
+}

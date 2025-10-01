@@ -1,0 +1,22 @@
+.put_blue_portal_around{box-shadow:0px 1px 1px rgba(0,0,0,.07);border-color:#6686ff;border-radius:5px}
+.react-colorful__pointer{
+  width:8px !important;
+  height:8px !important;
+}
+
+.react-colorful__hue{
+  height:8px !important;
+  margin-top:16px !important;
+  cursor:pointer !important;
+}
+
+.react-colorful__saturation{
+  border-radius:8px !important;
+  border:none !important;
+  cursor:pointer !important;
+}
+
+.react-colorful__last-control{
+  border-radius:100px !important;
+}
+

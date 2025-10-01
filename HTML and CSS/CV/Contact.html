@@ -1,0 +1,29 @@
+<head>
+    <title>My CV</title>
+    <link rel="stylesheet" type="text/css" href="cvStyles.css">
+</head>
+<body class = "body">
+    <div class="button-container">
+    <a href="HomePage.html" class = "button">Home Page</a>
+    <a href="AboutMe.html" class = "button">About Me</a>
+    <a href="Skills.html" class = "button">Experience</a>
+    <a href="Skills.html" class = "button">Skills</a>
+    <a href="Contact.html" class = "button">Contact</a>
+    </div>
+    <h1>Contact Page</h1>
+    <p>Email: mark@aol.com</p>
+    <p>Phone: 123-456-7890</p>
+    <p>LinkedIn: linkedin.com/markvinton</p>
+    <input type = "text" placeholder="Your email address" id = "email">
+    <input type = "text" placeholder="Your name" id = "name">
+    <input type="text" placeholder="Your message"id = "message">
+    <button class="button" onclick="submitForm()" type="submit">Send</button>
+    <script>
+        function submitForm() {
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            alert(`Thank you, ${name}! Your message "${message}" has been sent along with the email ${email}.`);
+        }
+    </script>
+</body>

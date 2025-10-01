@@ -1,0 +1,35 @@
+<html>
+<body>
+ 
+<h2>The XMLHttpRequest Object</h2>
+ 
+<div id="demo">
+<p>Let XML request this text.</p>
+<button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+ 
+<script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    const data = JSON.parse(this.responseText);
+    let output = "<h3>Search Results:</h3><ul>";
+    data.forEach(item => {
+      output += "<li><strong>" + item.show.name + "</strong><br>" +
+                "Genres: " + item.show.genres.join(", ") + "<br>" +
+                "Premiered: " + item.show.premiered + "<br>" +
+                "Summary: " + item.show.summary + "</li><br>";
+    });
+    output += "</ul>";
+    document.getElementById("demo").innerHTML = output;
+  };
+  xhttp.onerror = function() {
+    document.getElementById("demo").innerHTML = "Error fetching data.";
+  };
+  xhttp.open("GET", "https://api.tvmaze.com/search/shows?q=office");
+  xhttp.send();
+}
+</script>
+ 
+</body>
+</html>

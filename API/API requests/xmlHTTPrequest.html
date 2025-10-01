@@ -1,0 +1,27 @@
+<html>
+<body>
+ 
+<h2>The XMLHTTPRequest Info</h2>
+<div id="demo">
+<button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+ 
+<script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    const data = JSON.parse(this.responseText);
+    document.getElementById("demo").innerHTML =
+      "fact: " + data.fact + "<br>" +
+      "length: " + data.length + "<br>";
+  };
+  xhttp.onerror = function() {
+    document.getElementById("demo").innerHTML = "Error fetching data.";
+  };
+  xhttp.open("GET", "https://catfact.ninja/fact");
+  xhttp.send();
+}
+</script>
+ 
+</body>
+</html>

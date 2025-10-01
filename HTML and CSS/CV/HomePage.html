@@ -1,0 +1,41 @@
+<head>
+    <title>My CV</title>
+    <link rel="stylesheet" type="text/css" href="cvStyles.css">
+</head>
+<body class = "body">
+    <div class="button-container">
+    <a href="HomePage.html" class = "button">Home Page</a>
+    <a href="AboutMe.html" class = "button">About Me</a>
+    <a href="Experience.html" class = "button">Experience</a>
+    <a href="Skills.html" class = "button">Skills</a>
+    <a href="Contact.html" class = "button">Contact</a>
+    </div>
+    <h1>Mark Vinton</h1>
+    <p>As a highly motivated aspiring developer driven by a passion for technology, 
+        solving real-world problems, and a desire to contribute to your company's 
+        success.
+        With a proven track record of effectively managing multiple academic 
+        projects, technical group projects and volunteering events, honing my 
+        problem-solving and collaboration skills, which are some of my most valuable 
+        assets.
+        High level of efficiency and ability to quickly learn and adapt to multiple 
+        different languages and programs.</p>
+    <h2>Message Generator</h2>
+    <div class = "message-container">
+    <button class="button" onclick="showMessage()">Click me for a message</button>
+    </div>
+    <script>   
+        function showMessage(){
+            const messages = [
+                "Good luck with your interview!",
+                "Good Day",
+                "Good Morning",
+                "Good Afternoon",
+                "Good Evening",
+                "Have a great day!",
+            ];
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            alert(messages[randomIndex]);
+        }
+    </script>
+</body>
