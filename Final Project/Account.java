@@ -5,23 +5,20 @@ public class Account {
         Scanner sc = new Scanner(System.in);
         Accounts account;   //make a variable of type Accounts, the parent class/ an abstract class that will be used to call the child classes
 
-        System.out.println("Welcome to the Account Manager!");
-        System.out.println("Select an account type:");
-        System.out.println("1. Small Business");
-        System.out.println("2. Community");
-        System.out.println("3. Client");
-        System.out.println("4. Charity");
-        System.out.print("Enter choice 1,2,3,4 or 5");
+    Menu menu = new Menu();
+    menu.showMenu();
+
        
        int choice = sc.nextInt(); // Get user input for account type
 
         //handle account type selection
         switch(choice) {
+// Different Business Case
             case 1:
                 account = new SmallBusiness(); // Instantiate a SmallBusiness object
                 System.out.println("This is your Small Business account.");
                 createAccount.smallBusinessAccount = true; // Set the flag to true in createAccount so that the user can not create the same account twice.
-                System.out.println("Would you like to: 1: Deposit, 2:Withdraw, 3: Exit or 4: Transfer");
+                System.out.println("Would you like to: 1: Deposit, 2:Withdraw, 3: Transfer or 4: Exit");
                 int action = sc.nextInt();
 
                 switch (action) {  // Nested switch statement to handle actions within the selected account type
@@ -55,11 +52,11 @@ public class Account {
                         }
                         if (transferAccount != null) {
                             System.out.println("Enter amount to transfer"); 
-                            double transferAmount = sc.nextDouble();
+                            double transferAmount = sc.nextDouble();  // Allows for money to be transferred 
 
                         if (account.getBalance() - transferAmount >= account.overdraft) {
                             account.withdraw(transferAmount);
-                            transferAccount.deposit(transferAmount);
+                            transferAccount.deposit(transferAmount);  // actual transfer, if value is above overdraft it becomes insufficient
                             System.out.println("Transfer successful.");
                             System.out.println("Your new balance is £" + account.getBalance());
                         }else {
@@ -73,12 +70,12 @@ public class Account {
                         break;
                     
                 }
-                break;
+                break;     
             case 2:
                 account = new Community();
                 System.out.println("This is your Community account.");
                 createAccount.communityAccount = true;
-                System.out.println("Would you like to: 1: Deposit, 2:Withdraw or 3:Exit");
+                System.out.println("Would you like to: 1: Deposit, 2:Withdraw, 3:Transfer or 4:Exit");
                 int action2 = sc.nextInt();
 
                     switch (action2) {
@@ -94,7 +91,7 @@ public class Account {
                         account.withdraw(amount);
                         System.out.println("Your new value is £" + account.balance);
                         break;
-                     case 3:
+                    case 3:
                         System.out.println("Enter what account to transfer to: 1: Community, 2: Client or 3: Charity.");
                         int transferChoice = sc.nextInt();
 
@@ -135,7 +132,7 @@ public class Account {
                 account = new Client();
                 System.out.println("This is your Client account.");
                 createAccount.clientAccount= true;
-                System.out.println("Would you like to: 1: Deposit, 2:Withdraw or 3:Exit");
+                System.out.println("Would you like to: 1: Deposit, 2:Withdraw, 3:Transfer or 4:Exit");
                 int action3 = sc.nextInt();
 
                 switch (action3) {
@@ -151,7 +148,7 @@ public class Account {
                         account.withdraw(amount);
                         System.out.println("Your new value is £" + account.balance);
                         break;
-                     case 3:
+                    case 3:
                         System.out.println("Enter what account to transfer to: 1: Community, 2: Client or 3: Charity.");
                         int transferChoice = sc.nextInt();
 
@@ -192,7 +189,7 @@ public class Account {
                 account = new Charity();
                 System.out.println("This is your Small Business account.");
                 createAccount.charityAccount = true;
-                System.out.println("Would you like to: 1: Deposit, 2:Withdraw or 3:Exit");
+                System.out.println("Would you like to: 1: Deposit, 2:Withdraw, 3:Transfer or 4:Exit");
                 int action4 = sc.nextInt();
 
                 switch (action4) {
@@ -208,7 +205,7 @@ public class Account {
                         account.withdraw(amount);
                         System.out.println("Your new value is £" + account.balance);
                         break;
-                     case 3:
+                    case 3:
                         System.out.println("Enter what account to transfer to: 1: Community, 2: Client or 3: Charity.");
                         int transferChoice = sc.nextInt();
 
@@ -252,7 +249,7 @@ public class Account {
                  
             default:
                     System.out.println("Account not found");
-                    System.out.println("Would you like to create an ew account (y/n)");
+                    System.out.println("Would you like to create a new account (y/n)");
                     String response = sc.next().toLowerCase();
 
                     if(!response.equals("yes")){

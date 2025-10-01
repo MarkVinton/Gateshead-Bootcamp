@@ -23,24 +23,30 @@ public class createAccount {
     
     public static void main(String[] args) {
         
-//         clientAccount = true;
         createAccount newUser = new createAccount();
 
+//Checks the username and password against the pretend database
         newUser.userAndPass();
 
+//Asks the user which account type to create 
         newUser.accountType();
 
+//Asks the user how many Signatories are required
+//If more than 2 are required the user is asked for an extra password
         newUser.signatories();
 
+//Generates a random number for the user's account
         newUser.accountNumber();
 
+// Prints out a Summary of the users account information
         newUser.accountSummary();
 
+//Adds the new Users to the pretend database
         addAccount(newUser);
 
+//Allows the users to login with their new account
         login.main(args); 
-       
-}
+    }
     
     public static void addAccount(createAccount newAccount) {
 
@@ -87,6 +93,7 @@ public class createAccount {
         System.out.println("Signatories required: " + this.signatoriesRequired);
     }
 
+
     public  void accountType(){
     int i = 0;
         while (i == 0) {   
@@ -102,6 +109,7 @@ public class createAccount {
             switch (this.accountType) {
                 case "Small Business":
                 if (smallBusinessAccount == false){
+                    smallBusinessAccount = true;
                     this.overdraft = 1000;
                     System.out.println("Enter an initial deposit:");
                     this.initialDeposit = scanner.nextInt();
@@ -114,6 +122,7 @@ public class createAccount {
                 }
                 case "Community":
                     if (communityAccount == false){
+                    communityAccount = true;
                     this.overdraft = 2500;
                     System.out.println("Enter an initial deposit:");
                     this.initialDeposit = scanner.nextInt();
@@ -126,6 +135,7 @@ public class createAccount {
                 }
                 case "Client":
                     if (clientAccount == false){
+                    clientAccount = true;
                     this.overdraft = 1500;
                     System.out.println("Enter an initial deposit:");
                     this.initialDeposit = scanner.nextInt();
@@ -138,6 +148,7 @@ public class createAccount {
                 }
                 case "Charity": 
                     if (charityAccount == false){
+                    charityAccount = true;
                     this.overdraft = 3000;
                     System.out.println("Enter an initial deposit:");
                     this.initialDeposit = scanner.nextInt();

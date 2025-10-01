@@ -8,7 +8,7 @@ public class Main {
         if (input.equals("create")) {  //user input management
             createAccount.main(args);  // Call the main method of corresponding file depending on user input
         } else if (input.equals("login")) {
-            login.main(args);
+             login.main(args);
         } else {
             System.out.println("Invalid input. Please enter 'login' or 'create'."); // Handle invalid input
         }

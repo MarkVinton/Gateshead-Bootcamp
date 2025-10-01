@@ -7,7 +7,7 @@ public class Menu {
         System.out.println("2. Community");
         System.out.println("3. Client");
         System.out.println("4. Charity");
+        System.out.println("5. New Account");
         System.out.print("Enter choice 1,2,3,4 or 5");
     }
 }
-
