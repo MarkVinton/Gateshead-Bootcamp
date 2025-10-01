@@ -131,7 +131,7 @@ public class Account {
                         break;
                     }
                     break;
-             case 3:
+            case 3:
                 account = new Client();
                 System.out.println("This is your Client account.");
                 createAccount.clientAccount= true;
