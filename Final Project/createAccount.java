@@ -164,14 +164,32 @@ public class createAccount {
     }
 }
 
-    private void userAndPass(){
+
+    private String passwordValidation() { //method to validate password to ensure security
+        boolean validPassword = false;
+        String inputPassword = "";
+
+        while (validPassword != true) {
+            System.out.println("Enter a password (minimum 8 chars, 1 number, and 1 special character):");
+            inputPassword = scanner.nextLine();
+
+            if (inputPassword.length() >= 8 &&
+                inputPassword.matches(".*\\d.*") && // using regex to check for at least one digit
+                inputPassword.matches(".*[!@#$%^&*(),.?\":{}|<>].*")) { // using regex to check for at least one special character
+                validPassword = true;
+            } else {
+                System.out.println("Invalid password. Please try again.");
+            }
+        }
+        
+    return inputPassword;
+}
+
+    private void userAndPass() {
         System.out.println("Enter a username:");
         this.customerUsername = scanner.nextLine();
-
-        System.out.println("Enter a password:");
-        this.customerPassword = scanner.nextLine();
+        this.customerPassword = passwordValidation();
     }
-
     public void signatories(){
         System.out.println("How many signatories are required?");
         this.signatoriesRequired = scanner.nextInt();
@@ -179,9 +197,10 @@ public class createAccount {
 
         if ((int)this.signatoriesRequired > 1){
             System.out.println("Please Enter/Create your extra password");
-            this.extraPassword = scanner.nextLine();
+            this.extraPassword = passwordValidation();
         }
     }
+
 
     public void accountNumber(){
         this.AccountNumber = (int)(Math.random() * 10000);

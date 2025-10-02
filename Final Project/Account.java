@@ -54,7 +54,7 @@ public class Account {
                             System.out.println("Enter amount to transfer"); 
                             double transferAmount = sc.nextDouble();  // Allows for money to be transferred 
 
-                        if (account.getBalance() - transferAmount >= account.overdraft) {
+                        if (account.getBalance() - transferAmount >= -account.overdraft) {
                             account.withdraw(transferAmount);
                             transferAccount.deposit(transferAmount);  // actual transfer, if value is above overdraft it becomes insufficient
                             System.out.println("Transfer successful.");
@@ -112,7 +112,7 @@ public class Account {
                             System.out.println("Enter amount to transfer");
                             double transferAmount = sc.nextDouble();
 
-                        if (account.getBalance() - transferAmount >= account.overdraft) {
+                        if (account.getBalance() - transferAmount >= -account.overdraft) {
                             account.withdraw(transferAmount);
                             transferAccount.deposit(transferAmount);
                             System.out.println("Transfer successful.");
@@ -287,8 +287,12 @@ public class Account {
         System.out.println("Withdrawal must be positive.");
         return;
         }
-        balance -= amount;
-        System.out.println("Withdrew £" + amount);
+        if (balance - amount >= -overdraft){
+            balance -= amount;
+            System.out.println("Withdraw £" + amount);
+        }else{
+            System.out.println("You have reached your overdraft limit, this withdraw has been cancelled.");
+        }
     }
 
    /* public void transfer(double transferAccount) {
